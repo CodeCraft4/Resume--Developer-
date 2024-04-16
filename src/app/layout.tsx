@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Box, Typography } from "@mui/material";
+import Image from "next/image";
+import AppBar from "@/Components/Navbar/AppBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,47 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Box
+          sx={{
+            position: "relative",
+          }}
+        >
+          <Image
+            src={
+              "https://images.pexels.com/photos/4175070/pexels-photo-4175070.jpeg?auto=compress&cs=tinysrgb&w=600"
+            }
+            alt="bgImage"
+            width={1000}
+            height={500}
+            style={{
+              width: "100%",
+              objectFit: "cover",
+              height: "99.4vh",
+              filter: "brightness(45%)",
+            }}
+          />
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              width: "90%",
+              m:"5%",
+              px:4,
+              pr:4,
+              height: "80vh",
+              bgcolor: "rgba(255, 255, 255, 0.20)",
+              borderRadius: "16px",
+              filter: "blur(0.5px)",
+              color:"white",
+              textShadow:"2px 1px black"
+            }}
+          >
+            <AppBar/>
+            {children}
+          </Box>
+        </Box>
+      </body>
     </html>
   );
 }
